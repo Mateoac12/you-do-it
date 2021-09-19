@@ -5,16 +5,28 @@ import { Link as LinkOfWouter } from 'wouter'
 
 const primary = `
 color: ${styles.whiteAccent};
-background-color: ${styles.blackAccent};
-border: 1px solid black;
+background-color: ${styles.primary};
+border: 1px solid ${styles.whiteAccent};
 
 :hover {
-  color: ${styles.blackAccent};
-  background-color: ${styles.whiteAccent};
+  background-color: ${styles.primaryDark};
 }
 `
-const secondary = ``
-const tertiary = ``
+const secondary = `
+color: ${styles.primary};
+background-color: ${styles.whiteAccent};
+border: 1px solid ${styles.lowAccent};
+
+:hover {
+  background-color: ${styles.lowAccent};
+  border: 1px solid ${styles.lowAccent}
+}
+`
+const tertiary = `
+  color: ${styles.primary};
+  font-size: 16px;
+  
+`
 
 const allStyles = {
   [BUTTON_STYLE.PRIMARY]: primary,
@@ -24,11 +36,13 @@ const allStyles = {
 }
 
 const setStyles = (type) => {
+  console.log(type, allStyles[type])
   return allStyles[type] || allStyles.default
 }
 
 export const Link = styled(LinkOfWouter)`
-  padding: 16px 48px;
+  padding: 8px 48px;
+  margin: 8px;
   font-size: 24px;
   font-weight: 400;
   text-decoration: none;
