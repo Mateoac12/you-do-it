@@ -8,5 +8,5 @@ export const TITLE_STYLE = {
 export const BUTTON_STYLE = {
   PRIMARY: -1,
   SECONDARY: 0,
-  TERTIARY: 0,
+  TERTIARY: 1,
 }
