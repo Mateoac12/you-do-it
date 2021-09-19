@@ -1,6 +1,7 @@
 export const styles = {
   // colors
   primary: 'var(--primary)',
+  primaryDark: 'var(--primary-dark)',
 
   // accents
   whiteAccent: 'var(--white-accent)',
@@ -12,4 +13,5 @@ export const styles = {
 
   // queries
   desktopQuery: 'min-width: 950px',
+  smallQuery: 'max-width: 350px',
 }
