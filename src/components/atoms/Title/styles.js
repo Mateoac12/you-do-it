@@ -8,20 +8,14 @@ const principal = `
   margin: 32px 0;
   position: relative;
   display: inline-block;
-
-  ::before {
-    content: "";
-    width: 100%;
-    height: .40em;
-    position: absolute;
-    background-color: ${styles.primary};
-    bottom: 0;
-    transform: translateY(-50%);
-    z-index: -1;
-  }
+  color: ${styles.whiteAccent};
 
   @media(${styles.desktopQuery}) {
     font-size: 104px;
+  }
+
+  @media(${styles.smallQuery}) {
+    font-size: 48px;
   }
 `
 const primary = ``
