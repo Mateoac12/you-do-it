@@ -1,6 +1,7 @@
 :root {
   /* colors */
   --primary: #68d391;
+  --primary-dark: #54a874;
 
   /* accents */
   --white-accent: #fff;
@@ -21,15 +22,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  height: 100vh;
-  background: radial-gradient(#000 1%, transparent 1%),
-    radial-gradient(#000 1%, transparent 1%);
-  background-position: 0 0, 25px 25px;
-  background-repeat: repeat;
-  background-size: 25px 25px;
-
-  display: grid;
 }
 
 code {
