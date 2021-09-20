@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import CheckBox from 'components/atoms/CheckBox'
-import logo from 'logo.svg'
 
 import {
   Container,
@@ -10,19 +11,18 @@ import {
   TicketCount,
 } from './styles'
 
-const gym = {
-  id: 1,
-  name: 'Remove',
-  avatar: logo,
-  activity: 'Musculacion',
-  time: '14:00hs',
-  maxTickets: 10,
-  currentTickets: 8,
-}
+const Target = ({ gym }) => {
+  const [isChecked, setIsChecked] = useState(false)
+  const [dinamicTicket, setDynamicTicket] = useState(gym.currentTickets)
 
-const Target = () => {
+  useEffect(() => {
+    isChecked
+      ? setDynamicTicket((lastValue) => ++lastValue)
+      : setDynamicTicket(gym.currentTickets)
+  }, [isChecked])
+
   return (
-    <Container>
+    <Container isChecked={isChecked} isCompleted={gym.isCompleted}>
       <GymAvatar src={gym.avatar} />
       <div>
         <GymName>{gym.name}</GymName>
@@ -30,13 +30,25 @@ const Target = () => {
       </div>
       <div>
         <GymDate>{gym.time}</GymDate>
-        <TicketCount>
-          {gym.currentTickets}/{gym.maxTickets}
+        <TicketCount
+          fullTicket={dinamicTicket === gym.maxTickets}
+          isCompleted={gym.isCompleted}
+        >
+          {dinamicTicket}/{gym.maxTickets}
         </TicketCount>
       </div>
-      <CheckBox />
+      <CheckBox
+        gymId={gym.id}
+        setIsChecked={setIsChecked}
+        isChecked={isChecked}
+        isCompleted={gym.isCompleted}
+      />
     </Container>
   )
+}
+
+Target.propTypes = {
+  gym: PropTypes.object,
 }
 
 export default Target
