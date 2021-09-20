@@ -36,4 +36,7 @@ export const CircleCheck = styled.label`
   position: relative;
 
   ${({ isChecked }) => isChecked && setCheck}
+  ${({ isCompleted }) =>
+    isCompleted &&
+    `box-shadow: 0px 0px 8px ${styles.secondary}; border: 2px solid ${styles.secondary};`}
 `

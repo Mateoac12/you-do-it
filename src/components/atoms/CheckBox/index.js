@@ -1,20 +1,30 @@
-import { useState } from 'react'
+import PropTypes from 'prop-types'
 import { CircleCheck, InputCheck } from './styles'
 
-const CheckBox = () => {
-  const [isChecked, setIsChecked] = useState(false)
-
+const CheckBox = ({ setIsChecked, isChecked, gymId, isCompleted }) => {
   return (
     <>
       <InputCheck
-        id='name'
+        id={gymId}
         type='checkbox'
         onChange={() => setIsChecked((lastValue) => !lastValue)}
         checked={isChecked}
+        disabled={isCompleted}
       />
-      <CircleCheck htmlFor='name' isChecked={isChecked}></CircleCheck>
+      <CircleCheck
+        htmlFor={gymId}
+        isChecked={isChecked}
+        isCompleted={isCompleted}
+      ></CircleCheck>
     </>
   )
+}
+
+CheckBox.propTypes = {
+  setIsChecked: PropTypes.func,
+  isChecked: PropTypes.bool,
+  gymId: PropTypes.number,
+  isCompleted: PropTypes.bool,
 }
 
 export default CheckBox

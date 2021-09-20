@@ -36,7 +36,6 @@ const allStyles = {
 }
 
 const setStyles = (type) => {
-  console.log(type, allStyles[type])
   return allStyles[type] || allStyles.default
 }
 
