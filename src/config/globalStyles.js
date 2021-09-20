@@ -3,6 +3,8 @@ export const styles = {
   primary: 'var(--primary)',
   primaryDark: 'var(--primary-dark)',
 
+  secondary: 'var(--secondary)',
+
   // accents
   whiteAccent: 'var(--white-accent)',
   veryLowAccent: 'var(--very-low-accent)',
