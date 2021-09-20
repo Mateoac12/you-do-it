@@ -10,3 +10,7 @@ export const BUTTON_STYLE = {
   SECONDARY: 0,
   TERTIARY: 1,
 }
+
+export const START_TARGET = {
+  SECONDATY: -1,
+}
