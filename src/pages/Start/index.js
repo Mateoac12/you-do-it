@@ -1,6 +1,7 @@
 import Text from 'components/atoms/Text'
 import Title from 'components/atoms/Title'
 import { START_TARGET, TITLE_STYLE } from 'config/componentsRules'
+import { useLocation } from 'wouter'
 import {
   BoxTarget,
   ListOfTargets,
@@ -11,11 +12,13 @@ import {
 } from './styles'
 
 const Start = () => {
+  const [, setLocation] = useLocation()
+
   return (
     <>
       <Title type={TITLE_STYLE.PRINCIPAL}>Comienza!</Title>
       <Text>Elige un tipo de perfil</Text>
-      <ListOfTargets>
+      <ListOfTargets onClick={() => setLocation('/home')}>
         <BoxTarget>
           <SmallText>Deportista</SmallText>
           <TitleOfTarget>Cuenta de deportista</TitleOfTarget>
@@ -33,7 +36,7 @@ const Start = () => {
             <ListText>
               Crear una cuenta de Gimnasio y administrar tus usuarios.
             </ListText>
-            <ListText>Crear cupos por dia y hora.</ListText>
+            <ListText>Crear cupos por día y hora.</ListText>
           </ul>
         </BoxTarget>
       </ListOfTargets>
