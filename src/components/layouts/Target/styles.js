@@ -11,10 +11,16 @@ export const Container = styled.article`
   width: 300px;
   justify-content: center;
   transform: rotate(0) scale(1);
+  box-sizing: border-box;
+  display: flex;
+  max-width: 350px;
+  width: 100%;
+  padding: 8px 16px;
 
   @media (${styles.smallQuery}) {
     box-sizing: border-box;
     column-gap: 8px;
+    padding: 8px;
     width: 100%;
   }
 
@@ -81,4 +87,8 @@ export const TicketCount = styled.h2`
 
   ${({ fullTicket }) => fullTicket && `color: ${styles.primary};`}
   ${({ isCompleted }) => isCompleted && `color: ${styles.secondary};`}
+`
+
+export const GymBoxInformation = styled.div`
+  flex: 1;
 `

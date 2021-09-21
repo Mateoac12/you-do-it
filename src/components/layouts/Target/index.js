@@ -6,6 +6,7 @@ import {
   Container,
   GymActivity,
   GymAvatar,
+  GymBoxInformation,
   GymDate,
   GymName,
   TicketCount,
@@ -24,10 +25,10 @@ const Target = ({ gym }) => {
   return (
     <Container isChecked={isChecked} isCompleted={gym.isCompleted}>
       <GymAvatar src={gym.avatar} />
-      <div>
+      <GymBoxInformation>
         <GymName>{gym.name}</GymName>
         <GymActivity>{gym.activity}</GymActivity>
-      </div>
+      </GymBoxInformation>
       <div>
         <GymDate>{gym.time}</GymDate>
         <TicketCount
