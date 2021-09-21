@@ -32,11 +32,12 @@ export const CircleCheck = styled.label`
   border-radius: 50%;
   align-self: center;
   box-shadow: 0px 0px 8px ${styles.primary};
+  cursor: pointer;
 
   position: relative;
 
   ${({ isChecked }) => isChecked && setCheck}
   ${({ isCompleted }) =>
     isCompleted &&
-    `box-shadow: 0px 0px 8px ${styles.secondary}; border: 2px solid ${styles.secondary};`}
+    `box-shadow: 0px 0px 8px ${styles.secondary}; border: 2px solid ${styles.secondary}; cursor: not-allowed;`}
 `
