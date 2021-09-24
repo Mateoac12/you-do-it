@@ -14,7 +14,7 @@ const Landing = () => {
       <div className='button-container'>
         <ButtonLink
           type={BUTTON_STYLE.SECONDARY}
-          href='/'
+          href='/sign-in'
           text='Iniciar sesión'
         />
         <ButtonLink href='/start' text='Empieza Ya!' />
