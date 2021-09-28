@@ -20,8 +20,8 @@ const Landing = () => {
         <ButtonLink href='/start' text='Empieza Ya!' />
         <ButtonLink
           type={BUTTON_STYLE.TERTIARY}
-          href='/'
-          text='Como funciona la app?'
+          href='/about-app'
+          text='Cómo funciona la app?'
         />
       </div>
     </>

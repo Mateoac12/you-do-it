@@ -25,10 +25,12 @@ const Target = ({ gym }) => {
   return (
     <Container isChecked={isChecked} isCompleted={gym.isCompleted}>
       <GymAvatar src={gym.avatar} />
+
       <GymBoxInformation>
         <GymName>{gym.name}</GymName>
         <GymActivity>{gym.activity}</GymActivity>
       </GymBoxInformation>
+
       <div>
         <GymDate>{gym.time}</GymDate>
         <TicketCount
@@ -38,6 +40,7 @@ const Target = ({ gym }) => {
           {dinamicTicket}/{gym.maxTickets}
         </TicketCount>
       </div>
+
       <CheckBox
         gymId={gym.id}
         setIsChecked={setIsChecked}
