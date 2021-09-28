@@ -1,12 +1,10 @@
 import { initializeApp, getApps } from 'firebase/app'
-import { collection, addDoc, getFirestore } from 'firebase/firestore'
 import {
   GoogleAuthProvider,
   signInWithPopup,
   getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
   signOut,
+  updateProfile,
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -19,31 +17,27 @@ const firebaseConfig = {
 }
 
 getApps().length === 0 && initializeApp(firebaseConfig)
+
 const auth = getAuth()
-const db = getFirestore()
 
 export const LoginWithGoogle = () => {
   const googleProvider = new GoogleAuthProvider()
 
   return signInWithPopup(auth, googleProvider)
     .then(async ({ user }) => {
-      const { uid, photoURL, email, displayName } = user
-
-      await addDoc(collection(db, 'users'), {
-        uid,
-        photoURL,
-        email,
-        displayName,
-        subscription: 'sportPlayer',
+      updateProfile(auth, {
+        tenantId: 'sportPlayer',
+      }).then(() => {
+        const { uid, photoURL, email, displayName, tenantId } = user
+        console.log({ user })
+        return {
+          uid,
+          photoURL,
+          email,
+          displayName,
+          tenantId,
+        }
       })
-
-      return {
-        uid,
-        photoURL,
-        email,
-        displayName,
-        subscription: 'sportPlayer',
-      }
     })
     .catch((error) => {
       const errorCode = error.code
@@ -52,20 +46,6 @@ export const LoginWithGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromError(error)
 
       console.log({ errorCode, errorMessage, email, credential })
-    })
-}
-
-export const LoginWithEmailPass = () => {
-  createUserWithEmailAndPassword(auth, 'test@gmail.com', 'Qwer1234@!')
-    .then(async ({ user }) => {
-      await updateProfile(auth.currentUser, {
-        displayName: 'Mateo Alvarez',
-        subscription: 'sportPlayerTest',
-      })
-      return user
-    })
-    .catch((e) => {
-      console.log(e)
     })
 }
 
