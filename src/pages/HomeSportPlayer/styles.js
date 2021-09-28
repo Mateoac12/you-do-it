@@ -55,37 +55,52 @@ export const ButtonMenu = styled.div`
   cursor: pointer;
 `
 
+const setCloseStyle = (isOpen) => {
+  return (
+    isOpen &&
+    `
+    background-color: transparent;
+
+    ::before {
+      width: 100%;
+      transform: translateY(0) rotate(45deg);
+    }
+    ::after {
+      transform: translateY(0) rotate(-45deg);
+    }
+  `
+  )
+}
+
 export const LineOfButtons = styled.div`
   width: 100%;
-  padding: 2px;
+  height: 4px;
   background-color: ${styles.whiteAccent};
   border-radius: 40px;
 
-  ::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: block;
-    padding: 2px;
-    background-color: ${styles.whiteAccent};
-    box-sizing: border-box;
-    border-radius: 40px;
-  }
+  transition: background-color 0.2s ease;
 
+  ::before,
   ::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 60%;
-    display: block;
-    padding: 2px;
+    height: 4px;
+    width: 100%;
     background-color: ${styles.whiteAccent};
-    box-sizing: border-box;
-    border-radius: 40px;
+    border-radius: 999px;
+    transition: transform 0.2s ease, width 0.2s ease;
   }
+
+  ::before {
+    width: 60%;
+    right: 0;
+    transform: translateY(8px) rotate(0);
+  }
+  ::after {
+    left: 0;
+    transform: translateY(-8px) rotate(0);
+  }
+  ${({ isOpenMenu }) => setCloseStyle(isOpenMenu)};
 `
 
 export const PrincipalSection = styled.section`
@@ -95,4 +110,9 @@ export const PrincipalSection = styled.section`
 export const TitleOfList = styled.h2`
   color: ${styles.whiteAccent};
   font-size: 22px;
+`
+
+export const SettingsBox = styled.section`
+  display: grid;
+  row-gap: 40px;
 `

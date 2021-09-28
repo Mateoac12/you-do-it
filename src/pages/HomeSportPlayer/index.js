@@ -1,8 +1,8 @@
+import ButtonLink from 'components/atoms/ButtonLink'
+import Title from 'components/atoms/Title'
 import ListOfTargets from 'components/layouts/ListOfTargets'
-import { Context } from 'context/userContext'
-import { SignOut } from 'firebase/config'
-import { useContext, useState } from 'react'
-import { useLocation } from 'wouter'
+import { BUTTON_STYLE, TITLE_STYLE } from 'config/componentsRules'
+import { useState } from 'react'
 import {
   Avatar,
   ButtonMenu,
@@ -11,41 +11,52 @@ import {
   LineOfButtons,
   Link,
   PrincipalSection,
+  SettingsBox,
   TitleOfList,
   UserName,
 } from './styles'
 
 const HomeSportPlayer = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
-  const [, setLocation] = useLocation()
-  const { user, setUser } = useContext(Context)
   const handleChangeMenu = () => setIsOpenMenu((lastValue) => !lastValue)
-
-  const { displayName = '', photoURL = '' } = user
-
-  const handleLogOut = () => {
-    SignOut()
-    setUser(null)
-    setLocation('/')
-  }
 
   return (
     <HomeContainer>
       <Header>
         <Link href='/user'>
-          <Avatar src={photoURL} alt={displayName} />
-          <UserName>{displayName}</UserName>
+          <Avatar src='' alt='title' />
+          <UserName>Mateo Alvarez</UserName>
         </Link>
         <ButtonMenu onClick={handleChangeMenu}>
-          <LineOfButtons></LineOfButtons>
+          <LineOfButtons isOpenMenu={isOpenMenu}></LineOfButtons>
         </ButtonMenu>
-        {isOpenMenu && <section></section>}
       </Header>
       <PrincipalSection>
-        <TitleOfList>Reserva un horario</TitleOfList>
-        <ListOfTargets />
+        {isOpenMenu ? (
+          <SettingsBox>
+            <Title type={TITLE_STYLE.SECONDARY}>
+              Puedes agregar un nuevo gimnasio o salir del que ya estás.
+            </Title>
+            <div>
+              <ButtonLink
+                href='/add-code-gym'
+                text='Agregar Gym'
+                type={BUTTON_STYLE.SECONDARY}
+              />
+              <ButtonLink
+                href=''
+                text='Eliminar Gym'
+                type={BUTTON_STYLE.ALTERNATIVE}
+              />
+            </div>
+          </SettingsBox>
+        ) : (
+          <>
+            <TitleOfList>Reserva un horario</TitleOfList>
+            <ListOfTargets />
+          </>
+        )}
       </PrincipalSection>
-      <button onClick={handleLogOut}>Salir de aqui</button>
     </HomeContainer>
   )
 }
