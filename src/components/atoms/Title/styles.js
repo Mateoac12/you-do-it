@@ -18,8 +18,20 @@ const principal = `
     font-size: 48px;
   }
 `
-const primary = ``
-const secondary = ``
+const primary = `
+  font-size: 24px;
+  margin: 32px 0;
+  color: ${styles.whiteAccent};
+
+  @media(${styles.desktopQuery}) {
+    font-size: 40px;
+  }
+`
+const secondary = `
+  font-size: 20px;
+  color: ${styles.whiteAccent};
+`
+
 const tertiary = ``
 
 const listOfStyles = {
