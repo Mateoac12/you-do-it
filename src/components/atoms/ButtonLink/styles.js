@@ -28,10 +28,20 @@ const tertiary = `
   
 `
 
+const alternative = `
+  color: ${styles.whiteAccent};
+  border: 1px dashed ${styles.whiteAccent};
+
+  :hover {
+    background-color: ${styles.primaryDark};
+  }
+`
+
 const allStyles = {
   [BUTTON_STYLE.PRIMARY]: primary,
   [BUTTON_STYLE.SECONDARY]: secondary,
   [BUTTON_STYLE.TERTIARY]: tertiary,
+  [BUTTON_STYLE.ALTERNATIVE]: alternative,
   default: primary,
 }
 
