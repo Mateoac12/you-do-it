@@ -1,18 +1,11 @@
-import { Context } from 'context/userContext'
-import { LoginWithGoogle } from 'firebase/config'
-import { useContext } from 'react'
+import GoogleSignIn from 'components/atoms/GoogleSignIn'
+import Title from 'components/atoms/Title'
 
 const SignIn = () => {
-  const { setUser } = useContext(Context)
-
-  const handleLogin = () => {
-    LoginWithGoogle().then((data) => setUser({ ...data }))
-  }
-
   return (
     <>
-      <h1>Iniciar sesion</h1>
-      <button onClick={handleLogin}>Iniciar sesion con google</button>
+      <Title>Iniciar sesion</Title>
+      <GoogleSignIn />
     </>
   )
 }
