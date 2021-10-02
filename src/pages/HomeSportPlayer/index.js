@@ -2,7 +2,8 @@ import ButtonLink from 'components/atoms/ButtonLink'
 import Title from 'components/atoms/Title'
 import ListOfTargets from 'components/layouts/ListOfTargets'
 import { BUTTON_STYLE, TITLE_STYLE } from 'config/componentsRules'
-import { useState } from 'react'
+import { Context } from 'context/userContext'
+import { useContext, useState } from 'react'
 import {
   Avatar,
   ButtonMenu,
@@ -18,14 +19,16 @@ import {
 
 const HomeSportPlayer = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const { user } = useContext(Context)
+  const { displayName, photoURL } = user
   const handleChangeMenu = () => setIsOpenMenu((lastValue) => !lastValue)
 
   return (
     <HomeContainer>
       <Header>
         <Link href='/user'>
-          <Avatar src='' alt='title' />
-          <UserName>Mateo Alvarez</UserName>
+          <Avatar src={photoURL} alt='title' />
+          <UserName>{displayName}</UserName>
         </Link>
         <ButtonMenu onClick={handleChangeMenu}>
           <LineOfButtons isOpenMenu={isOpenMenu}></LineOfButtons>
