@@ -1,0 +1,6 @@
+export const SUBSCRIPTIONS = {
+  TRAINER: 'trainer',
+  SPORTPLAYER: 'sportplayer',
+}
+
+export const LIST_OF_SUBS = [SUBSCRIPTIONS.TRAINER, SUBSCRIPTIONS.SPORTPLAYER]
