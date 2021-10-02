@@ -1,18 +1,16 @@
-import HomeSportPlayer from 'pages/HomeSportPlayer'
 import firebase from 'firebase/app'
-import Landing from 'pages/Landing'
-import Start from 'pages/Start'
-import StartAthlete from 'pages/StartAthlete'
-import { Switch, Route } from 'wouter'
-import SignIn from 'pages/SignIn'
-import AboutApp from 'pages/AboutApp'
-import AddCodeGym from 'pages/AddCodeGym'
-import { useContext, useEffect } from 'react'
+
+import { useContext, useEffect, useState } from 'react'
 import { Context } from 'context/userContext'
 import { getUserOfCollection } from 'firebase/googleAuth'
 
+import { Loading } from 'components/atoms/Spinner/styles'
+import PrivateRoutes from './privateRoutes'
+import PublicRoutes from './publicRoutes'
+
 const Routers = () => {
   const { user, setUser } = useContext(Context)
+  const [loader, setLoader] = useState(true)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (preUser) => {
@@ -20,22 +18,12 @@ const Routers = () => {
         const userLogged = await getUserOfCollection(preUser.uid)
         userLogged && setUser(userLogged)
       }
+      setLoader(false)
     })
   }, [])
 
   return (
-    <Switch>
-      <>
-        <Route path='/home' component={HomeSportPlayer} />
-
-        <Route path='/' component={Landing} />
-        <Route path='/start' component={Start} />
-        <Route path='/sign-in' component={SignIn} />
-        <Route path='/start-as-athlete' component={StartAthlete} />
-        <Route path='/about-app' component={AboutApp} />
-        <Route path='/add-code-gym' component={AddCodeGym} />
-      </>
-    </Switch>
+    <>{loader ? <Loading /> : user ? <PrivateRoutes /> : <PublicRoutes />}</>
   )
 }
 
