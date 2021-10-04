@@ -21,3 +21,8 @@ export const TEXT_STYLE = {
   SECONDARY: 0,
   TERTIARY: 1,
 }
+
+export const AVATAR_STYLE = {
+  SMALL: -1,
+  BIG: 0,
+}
