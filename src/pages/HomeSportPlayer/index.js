@@ -1,11 +1,12 @@
 import ButtonLink from 'components/atoms/ButtonLink'
+import Avatar from 'components/atoms/Avatar'
+import Text from 'components/atoms/Text'
 import Title from 'components/atoms/Title'
 import ListOfTargets from 'components/layouts/ListOfTargets'
 import { BUTTON_STYLE, TITLE_STYLE } from 'config/componentsRules'
 import { Context } from 'context/userContext'
 import { useContext, useState } from 'react'
 import {
-  Avatar,
   ButtonMenu,
   Header,
   HomeContainer,
@@ -17,6 +18,8 @@ import {
   UserName,
 } from './styles'
 
+const testArray = []
+
 const HomeSportPlayer = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const { user } = useContext(Context)
@@ -26,8 +29,8 @@ const HomeSportPlayer = () => {
   return (
     <HomeContainer>
       <Header>
-        <Link href='/user'>
-          <Avatar src={photoURL} alt='title' />
+        <Link href='/user-settings'>
+          <Avatar src={photoURL} alt={displayName} />
           <UserName>{displayName}</UserName>
         </Link>
         <ButtonMenu onClick={handleChangeMenu}>
@@ -55,8 +58,25 @@ const HomeSportPlayer = () => {
           </SettingsBox>
         ) : (
           <>
-            <TitleOfList>Reserva un horario</TitleOfList>
-            <ListOfTargets />
+            {testArray.length > 0 ? (
+              <>
+                <TitleOfList>Reserva un horario</TitleOfList>
+                <ListOfTargets />
+              </>
+            ) : (
+              <>
+                <Text>Bienvenido!</Text>
+                <Text>
+                  Aquí vas a poder ver la disponibilidad de cupos en tu
+                  gimnasio!
+                </Text>
+                <ButtonLink
+                  href='#'
+                  text='Agregar gimnasio'
+                  type={BUTTON_STYLE.SECONDARY}
+                />
+              </>
+            )}
           </>
         )}
       </PrincipalSection>

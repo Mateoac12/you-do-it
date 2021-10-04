@@ -32,13 +32,6 @@ export const Link = styled(LinkOfWouter)`
   text-decoration: none;
 `
 
-export const Avatar = styled.img`
-  width: 32px;
-  background-color: var(--white-accent);
-  height: 32px;
-  border-radius: 50%;
-`
-
 export const UserName = styled.h2`
   margin: 0;
   font-size: 20px;
