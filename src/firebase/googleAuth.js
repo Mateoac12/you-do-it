@@ -46,7 +46,7 @@ export const getUserOfCollection = async (uid) => {
 }
 
 const getStatusOfSubscription = (user) => {
-  const userData = user.data()
+  const userData = { ...user.data(), id: user.id }
   const typeOfUser = userData.subscription
 
   return typeof typeOfUser === 'undefined'
