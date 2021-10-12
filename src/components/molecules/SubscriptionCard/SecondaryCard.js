@@ -1,4 +1,6 @@
 import { START_TARGET } from 'config/componentsRules'
+import { SUBSCRIPTIONS } from 'config/typeOfSubs'
+import { useGoogleSignIn } from 'hooks/useGoogleSignIn'
 
 import {
   BoxTarget,
@@ -9,8 +11,12 @@ import {
 } from './styles'
 
 const SecondaryCard = () => {
+  const { handleLogin } = useGoogleSignIn({
+    typeOfSub: SUBSCRIPTIONS.TRAINER,
+  })
+
   return (
-    <BoxTarget type={START_TARGET.SECONDATY}>
+    <BoxTarget type={START_TARGET.SECONDATY} onClick={handleLogin}>
       <SmallText>Entrenador</SmallText>
       <TitleOfTarget>Cuenta de entrenador</TitleOfTarget>
       <NormalText>Con este usuario puedes</NormalText>
