@@ -18,7 +18,7 @@ export const ButtonInput = styled.button`
   display: inline-block;
   color: ${styles.whiteAccent};
   cursor: pointer;
-  margin: 24px 0;
+  margin: 8px 0;
 
   :hover {
     background-color: ${styles.primaryDark};
@@ -27,4 +27,12 @@ export const ButtonInput = styled.button`
 
 export const InputHidde = styled.input`
   display: none;
+`
+
+export const Input = styled.input`
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid ${styles.primary};
+  font-size: 24px;
+  text-align: center;
 `

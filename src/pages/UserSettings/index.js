@@ -5,12 +5,15 @@ import { Context } from 'context/userContext'
 import { useContext, useEffect, useRef, useState } from 'react'
 import firebase from 'firebase/app'
 import uploadImage from 'firebase/upleadUserImage'
-import { ButtonInput, InputHidde, PageContent } from './styles'
+import { ButtonInput, Input, InputHidde, PageContent } from './styles'
+import ButtonFunction from 'components/atoms/ButtonFunction'
 
 const UserSettings = () => {
+  const [task, setTask] = useState(null)
+  const [showInput, setShowInput] = useState(false)
+  const [newName, setNewName] = useState('')
   const { user, setUser } = useContext(Context)
   const { displayName, photoURL, id } = user
-  const [task, setTask] = useState(null)
   const file = useRef()
 
   const handleChange = () => {
@@ -34,6 +37,9 @@ const UserSettings = () => {
         setUser(null)
       })
   }
+
+  const handleChangeName = () => setShowInput((lastValue) => !lastValue)
+  const handleChangeNewName = (e) => setNewName(e.target.value)
 
   useEffect(() => {
     if (task) {
@@ -60,7 +66,20 @@ const UserSettings = () => {
       />
 
       <Title>{displayName}</Title>
-      <button onClick={handleLogout}>Cerrar sesion</button>
+      {showInput && (
+        <section>
+          <Input value={newName} onChange={handleChangeNewName} />
+          <ButtonFunction text='Confirmar cambios' onClick={() => {}} />
+          <ButtonFunction
+            text={showInput ? 'Cancelar' : 'Cambiar nombre'}
+            onClick={handleChangeName}
+          />
+        </section>
+      )}
+      {!showInput && (
+        <ButtonFunction text='Cambiar nombre' onClick={handleChangeName} />
+      )}
+      <ButtonFunction text='Cerrar Sesion' onClick={handleLogout} />
     </PageContent>
   )
 }
