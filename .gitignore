@@ -25,3 +25,5 @@ yarn-error.log*
 yarn.lock
 package.json
 package-lock.json
+
+example_to_json.js
