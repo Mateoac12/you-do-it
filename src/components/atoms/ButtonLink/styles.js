@@ -26,6 +26,9 @@ const tertiary = `
   color: ${styles.primary};
   font-size: 16px;
   
+  :hover {
+    color: ${styles.primaryDark};
+  }
 `
 
 const alternative = `
