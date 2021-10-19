@@ -1,4 +1,3 @@
-import Header from 'components/molecules/Header'
 import { Context } from 'context/userContext'
 import { useContext } from 'react'
 import { HomeContainer, PrincipalSection } from './styles'
@@ -11,7 +10,6 @@ const HomePage = () => {
 
   return (
     <HomeContainer>
-      <Header />
       <PrincipalSection>{subscription && <TrainerHome />}</PrincipalSection>
     </HomeContainer>
   )

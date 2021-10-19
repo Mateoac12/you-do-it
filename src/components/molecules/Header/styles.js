@@ -13,6 +13,11 @@ export const HeaderContainer = styled.header`
   z-index: 100;
   padding: 16px 0;
 
+  max-width: 550px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
   @media (${styles.desktopQuery}) {
     margin-top: 0;
   }
