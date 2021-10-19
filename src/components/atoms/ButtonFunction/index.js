@@ -2,7 +2,11 @@ import PropTypes from 'prop-types'
 import { ButtonStyle } from './styles'
 
 const ButtonFunction = ({ text, onClick, type }) => {
-  return <ButtonStyle onClick={onClick}>{text}</ButtonStyle>
+  return (
+    <ButtonStyle onClick={onClick} type={type}>
+      {text}
+    </ButtonStyle>
+  )
 }
 
 ButtonFunction.propTypes = {
