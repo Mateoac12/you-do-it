@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { styles } from 'config/globalStyles'
+import { Link as LinkOfWouter } from 'wouter'
 
 export const MenuAndButtonBox = styled.div`
   position: relative;
@@ -67,7 +68,7 @@ export const DropDownBox = styled.ul`
   right: 0;
   top: 24px;
   background-color: ${styles.whiteAccent};
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0rem;
   width: max-content;
   border-radius: 8px;
   list-style: none;
@@ -84,9 +85,13 @@ export const DropDownItem = styled.li`
   font-size: 24px;
   text-align: right;
   cursor: pointer;
-  border-radius: 8px;
 
   :hover {
     background-color: ${styles.lowAccent};
   }
+`
+
+export const Link = styled(LinkOfWouter)`
+  text-decoration: none;
+  color: ${styles.blackAccent};
 `

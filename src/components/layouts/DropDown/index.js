@@ -1,10 +1,12 @@
 import { useState } from 'react'
+
 import {
   ButtonMenu,
   DropDownBox,
   DropDownItem,
   LineOfButtons,
   MenuAndButtonBox,
+  Link,
 } from './styles'
 
 const DropDown = () => {
@@ -16,8 +18,10 @@ const DropDown = () => {
       <ButtonMenu onClick={handleChangeMenu}>
         <LineOfButtons isOpenMenu={isOpenMenu}></LineOfButtons>
       </ButtonMenu>
-      <DropDownBox isOpenMenu={isOpenMenu}>
-        <DropDownItem>Agregar Gym</DropDownItem>
+      <DropDownBox isOpenMenu={isOpenMenu} onClick={handleChangeMenu}>
+        <DropDownItem>
+          <Link href='/add-code-gym'>Agregar Gym</Link>
+        </DropDownItem>
         <DropDownItem>Eliminar Gym</DropDownItem>
       </DropDownBox>
     </MenuAndButtonBox>
