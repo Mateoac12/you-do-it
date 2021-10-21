@@ -1,9 +1,13 @@
+import ButtonFunction from 'components/atoms/ButtonFunction'
+import Input from 'components/atoms/Input'
+import { BUTTON_STYLE } from 'config/componentsRules'
 import { useState } from 'react'
 
 const TrainerHome = () => {
   const [data, setData] = useState({})
 
   const handleSubmit = (e) => {
+    console.log(e.target)
     e.preventDefault()
     setData({
       displayName: e.target.displayName.value,
@@ -15,18 +19,33 @@ const TrainerHome = () => {
   console.log(data)
   return (
     <form onSubmit={handleSubmit}>
-      <input name='displayName' placeholder='Nombre del Gym'></input>
-      <input
+      <Input
+        label='Nombre del Gymnasio:'
+        name='displayName'
+        placeholder='Nombre del Gym'
+      />
+
+      <Input
+        placeholder='Sala, fisio...'
         name='activityName'
-        placeholder='Actividad. ej: sala, fisio, etc.'
-      ></input>
-      <input
+        label='Actividad del dia:'
+      />
+
+      <Input
+        placeholder='Cupos'
         name='limitUsers'
         type='number'
-        placeholder='Numero de cupos'
-      ></input>
-      <input name='date' type='datetime-local'></input>
-      <button>Crear clase</button>
+        label='Cupos de la clase:'
+      />
+
+      <Input
+        placeholder='Cupos'
+        name='date'
+        type='datetime-local'
+        label='Agregar fecha:'
+      />
+
+      <ButtonFunction type={BUTTON_STYLE.SECONDARY} text='Crear clase' />
     </form>
   )
 }

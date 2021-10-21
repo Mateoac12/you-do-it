@@ -1,7 +1,8 @@
 import { Context } from 'context/userContext'
 import { useContext } from 'react'
 import { HomeContainer, PrincipalSection } from './styles'
-import TrainerHome from 'pages/HomePage/TrainerHome'
+// import TrainerHome from 'pages/HomePage/TrainerHome'
+import SportPlayerHome from './SportPlaterHome'
 
 const HomePage = () => {
   const {
@@ -10,7 +11,7 @@ const HomePage = () => {
 
   return (
     <HomeContainer>
-      <PrincipalSection>{subscription && <TrainerHome />}</PrincipalSection>
+      <PrincipalSection>{subscription && <SportPlayerHome />}</PrincipalSection>
     </HomeContainer>
   )
 }
