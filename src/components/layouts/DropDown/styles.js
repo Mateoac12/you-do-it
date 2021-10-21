@@ -70,6 +70,7 @@ export const DropDownBox = styled.ul`
   background-color: ${styles.whiteAccent};
   padding: 0.5rem 0rem;
   width: max-content;
+  border: 1px solid ${styles.lowAccent};
   border-radius: 8px;
   list-style: none;
   transform: rotateX(0);
@@ -82,7 +83,7 @@ export const DropDownBox = styled.ul`
 
 export const DropDownItem = styled.li`
   padding: 0.5rem 2rem;
-  font-size: 24px;
+  font-size: 16px;
   text-align: right;
   cursor: pointer;
 

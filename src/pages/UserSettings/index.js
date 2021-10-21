@@ -1,6 +1,6 @@
 import Avatar from 'components/atoms/Avatar'
 import Title from 'components/atoms/Title'
-import { AVATAR_STYLE } from 'config/componentsRules'
+import { AVATAR_STYLE, BUTTON_STYLE } from 'config/componentsRules'
 import { Context } from 'context/userContext'
 import { useContext, useEffect, useRef, useState } from 'react'
 import firebase from 'firebase/app'
@@ -71,6 +71,7 @@ const UserSettings = () => {
           <Input value={newName} onChange={handleChangeNewName} />
           <ButtonFunction text='Confirmar cambios' onClick={() => {}} />
           <ButtonFunction
+            type={BUTTON_STYLE.TERTIARY}
             text={showInput ? 'Cancelar' : 'Cambiar nombre'}
             onClick={handleChangeName}
           />
