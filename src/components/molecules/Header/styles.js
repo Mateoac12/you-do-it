@@ -35,4 +35,7 @@ export const UserName = styled.h2`
   font-size: 20px;
   color: var(--white-accent);
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
 `
