@@ -2,18 +2,16 @@ import Avatar from 'components/atoms/Avatar'
 import Title from 'components/atoms/Title'
 import { AVATAR_STYLE, BUTTON_STYLE } from 'config/componentsRules'
 import { Context } from 'context/userContext'
-import { useContext, useEffect, useRef, useState } from 'react'
-import firebase from 'firebase/app'
-import uploadImage from 'firebase/upleadUserImage'
+import { useContext, useRef, useState } from 'react'
+
 import { ButtonInput, Input, InputHidde, PageContent } from './styles'
 import ButtonFunction from 'components/atoms/ButtonFunction'
 
 const UserSettings = () => {
-  const [task, setTask] = useState(null)
   const [showInput, setShowInput] = useState(false)
   const [newName, setNewName] = useState('')
-  const { user, setUser } = useContext(Context)
-  const { displayName, photoURL, id } = user
+  const { user } = useContext(Context)
+  const { displayName, photoURL } = user
   const file = useRef()
 
   const handleChange = () => {
@@ -21,37 +19,15 @@ const UserSettings = () => {
   }
 
   const handleSubmitImage = (e) => {
-    const file = e.target.files[0]
-    const ref = firebase
-      .storage()
-      .ref(`/user-images/${encodeURI(displayName)}/${file.name}`)
-    const task = ref.put(file)
-    setTask(task)
+    console.log(e)
   }
 
   const handleLogout = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        setUser(null)
-      })
+    console.log('')
   }
 
   const handleChangeName = () => setShowInput((lastValue) => !lastValue)
   const handleChangeNewName = (e) => setNewName(e.target.value)
-
-  useEffect(() => {
-    if (task) {
-      const getComplete = () => {
-        task.snapshot.ref.getDownloadURL().then((newImage) => {
-          uploadImage({ id, image: newImage, user, setUser })
-        })
-      }
-
-      task.on('state_changed', getComplete)
-    }
-  }, [task])
 
   return (
     <PageContent>
