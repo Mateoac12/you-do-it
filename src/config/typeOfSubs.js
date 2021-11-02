@@ -1,6 +1,6 @@
 export const SUBSCRIPTIONS = {
-  TRAINER: 'trainer',
-  SPORTPLAYER: 'sportplayer',
+  TRAINER: 'TRAINER',
+  SPORTPLAYER: 'SPORTPLAYER',
 }
 
 export const SUBSCRIPTION_UI = {
