@@ -1,25 +1,15 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { forwardRef } from 'react'
 import { InputBar, Label } from './styles'
 
-const Input = ({ placeholder, label, name, ...props }) => {
-  const [inputValue, setInputValue] = useState('')
-
-  const handleChangeValue = (e) => setInputValue(e.target.value)
-
+const Input = forwardRef(({ placeholder, label, name, ...props }, ref) => {
   return (
     <>
       {label && <Label htmlFor={name}>{label}</Label>}
-      <InputBar
-        placeholder={placeholder}
-        value={inputValue}
-        onChange={handleChangeValue}
-        name={name}
-        {...props}
-      />
+      <InputBar placeholder={placeholder} name={name} ref={ref} {...props} />
     </>
   )
-}
+})
 
 Input.propTypes = {
   placeholder: PropTypes.string,
