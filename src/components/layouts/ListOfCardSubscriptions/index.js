@@ -6,8 +6,8 @@ import { ListOfTargets } from './styles'
 const ListOfCardSubscriptions = () => {
   return (
     <ListOfTargets>
-      <SubscriptionCard />
-      <SubscriptionCard type={START_TARGET.SECONDATY} />
+      <SubscriptionCard key={1} />
+      <SubscriptionCard key={2} type={START_TARGET.SECONDATY} />
     </ListOfTargets>
   )
 }
