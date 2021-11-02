@@ -7,12 +7,7 @@ const secondary = `
   color: ${styles.whiteAccent};
   border: 4px dotted ${styles.whiteAccent};
 
-  small {
-    color: ${styles.primary};
-    background-color: ${styles.whiteAccent};
-  }
-
-   li::before {
+  li::before {
     border-color: ${styles.whiteAccent};
   }
 `
@@ -24,15 +19,6 @@ const allStyles = {
 const handleSetStyles = (type) => {
   return allStyles[type] || ''
 }
-
-export const SmallText = styled.small`
-  position: absolute;
-  right: 16px;
-  color: ${styles.whiteAccent};
-  background-color: ${styles.primary};
-  padding: 8px 18px;
-  border-radius: 40px;
-`
 
 export const BoxTarget = styled.article`
   position: relative;
