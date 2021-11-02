@@ -22,5 +22,6 @@ module.exports = {
   ignorePatterns: ['App.test.js'],
   rules: {
     'react/react-in-jsx-scope': RULES.OFF,
+    'react/display-name': RULES.OFF,
   },
 }
