@@ -12,6 +12,9 @@
   --higth-accent: #333333;
   --black-accent: #000;
 
+  /* errors */
+  --red-500: #fc8181;
+
   /* queries */
   --desktop-query: 950px;
 }

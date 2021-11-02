@@ -13,6 +13,9 @@ export const styles = {
   hightAccent: 'var(--higth-accent)',
   blackAccent: 'var(--black-accent)',
 
+  // error
+  red500: 'var(--red-500)',
+
   // queries
   desktopQuery: 'min-width: 950px',
   smallQuery: 'max-width: 350px',
