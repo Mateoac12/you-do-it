@@ -27,3 +27,5 @@ package.json
 package-lock.json
 
 example_to_json.js
+
+.env
