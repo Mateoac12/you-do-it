@@ -1,23 +1,22 @@
+import SpanSubscription from 'components/atoms/SpanSubscription'
 import { START_TARGET } from 'config/componentsRules'
 import { SUBSCRIPTIONS } from 'config/typeOfSubs'
-import { useGoogleSignIn } from 'hooks/useGoogleSignIn'
+import { useLocation } from 'wouter'
 
-import {
-  BoxTarget,
-  ListText,
-  NormalText,
-  SmallText,
-  TitleOfTarget,
-} from './styles'
+import { BoxTarget, ListText, NormalText, TitleOfTarget } from './styles'
 
 const SecondaryCard = () => {
-  const { handleLogin } = useGoogleSignIn({
-    typeOfSub: SUBSCRIPTIONS.TRAINER,
-  })
+  const [, setLocation] = useLocation()
+
+  const handleRegisterSportPlayer = () =>
+    setLocation(`/register/${SUBSCRIPTIONS.TRAINER}`)
 
   return (
-    <BoxTarget type={START_TARGET.SECONDATY} onClick={handleLogin}>
-      <SmallText>Entrenador</SmallText>
+    <BoxTarget
+      type={START_TARGET.SECONDATY}
+      onClick={handleRegisterSportPlayer}
+    >
+      <SpanSubscription>{SUBSCRIPTIONS.TRAINER}</SpanSubscription>
       <TitleOfTarget>Cuenta de entrenador</TitleOfTarget>
       <NormalText>Con este usuario puedes</NormalText>
       <ul>

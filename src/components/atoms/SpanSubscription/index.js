@@ -5,7 +5,7 @@ import { SpanText } from './styles'
 const SpanSubscription = ({ children }) => {
   const textToUI = SUBSCRIPTION_UI[children] || children
 
-  return <SpanText>{textToUI}</SpanText>
+  return <SpanText type={children}>{textToUI}</SpanText>
 }
 
 SpanSubscription.propTypes = {
