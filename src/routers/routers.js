@@ -9,6 +9,7 @@ const Routers = () => {
   const { user } = useContext(Context)
   const [loader, setLoader] = useState(true)
 
+  // TODO: chequear en indexedDB o localStorage si existe un token y el objeto User. (posible hook)
   useEffect(() => {
     setLoader(false)
   }, [])
