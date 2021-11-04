@@ -28,6 +28,28 @@ export const Link = styled(LinkOfWouter)`
   column-gap: 8px;
   align-items: center;
   text-decoration: none;
+  flex: 1;
+`
+
+export const LinkHome = styled(LinkOfWouter)`
+  color: ${styles.whiteAccent};
+  background-color: ${styles.primary};
+  padding: 1rem 1rem 0.5rem;
+  border-radius: 40px 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  font-size: 12px;
+  transform: translateX(-50%);
+
+  :hover {
+    background-color: ${styles.primaryDark};
+  }
 `
 
 export const UserName = styled.h2`
