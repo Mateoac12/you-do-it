@@ -21,4 +21,5 @@ export const AvatarImage = styled.img`
   object-fit: cover;
   border-radius: 50%;
   ${({ type }) => handleSelectSize(type)}
+  ${({ loading }) => loading && `opacity: .5;`}
 `
