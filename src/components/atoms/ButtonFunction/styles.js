@@ -17,6 +17,11 @@ export const ButtonStyle = styled.button`
     background-color: ${styles.primaryDark};
   }
 
+  :disabled {
+    cursor: no-drop;
+    opacity: 0.5;
+  }
+
   ${({ type }) => setStyles(type)}
 `
 
