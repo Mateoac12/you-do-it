@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import CheckBox from 'components/atoms/CheckBox'
 
+import AvatarDefault from 'assets/logo/default-avatar.png'
+
 import {
   Container,
   GymActivity,
@@ -12,47 +14,60 @@ import {
   TicketCount,
 } from './styles'
 
-const Target = ({ gym }) => {
+const Target = ({ gymPartner, classes }) => {
   const [isChecked, setIsChecked] = useState(false)
-  const [dinamicTicket, setDynamicTicket] = useState(gym.currentTickets)
+  const [dinamicTicket, setDynamicTicket] = useState(2)
 
   useEffect(() => {
     isChecked
       ? setDynamicTicket((lastValue) => ++lastValue)
-      : setDynamicTicket(gym.currentTickets)
+      : setDynamicTicket(2)
   }, [isChecked])
 
   return (
-    <Container isChecked={isChecked} isCompleted={gym.isCompleted}>
-      <GymAvatar src={gym.avatar} />
+    <>
+      {classes &&
+        classes.map((singleClass) => (
+          <>
+            <Container
+              key={singleClass._id}
+              isChecked={isChecked}
+              isCompleted={singleClass.isCompleted}
+            >
+              <GymAvatar src={gymPartner.avatar || AvatarDefault} />
 
-      <GymBoxInformation>
-        <GymName>{gym.name}</GymName>
-        <GymActivity>{gym.activity}</GymActivity>
-      </GymBoxInformation>
+              <GymBoxInformation>
+                <GymName>{gymPartner.displayName}</GymName>
+                <GymActivity>{singleClass.activity}</GymActivity>
+              </GymBoxInformation>
 
-      <div>
-        <GymDate>{gym.time}</GymDate>
-        <TicketCount
-          fullTicket={dinamicTicket === gym.maxTickets}
-          isCompleted={gym.isCompleted}
-        >
-          {dinamicTicket}/{gym.maxTickets}
-        </TicketCount>
-      </div>
+              <div>
+                <GymDate>{new Date(singleClass.date).getHours()} hs.</GymDate>
+                <TicketCount
+                  fullTicket={dinamicTicket === singleClass.limitQuotas}
+                  isCompleted={singleClass.isCompleted}
+                >
+                  {singleClass.quotas.length}/{singleClass.limitQuotas}
+                </TicketCount>
+              </div>
 
-      <CheckBox
-        gymId={gym.id}
-        setIsChecked={setIsChecked}
-        isChecked={isChecked}
-        isCompleted={gym.isCompleted}
-      />
-    </Container>
+              <CheckBox
+                gymId={singleClass._id}
+                setIsChecked={setIsChecked}
+                isChecked={isChecked}
+                isCompleted={singleClass.isCompleted}
+                key={singleClass._id}
+              />
+            </Container>
+          </>
+        ))}
+    </>
   )
 }
 
 Target.propTypes = {
-  gym: PropTypes.object,
+  classes: PropTypes.object,
+  gymPartner: PropTypes.object,
 }
 
 export default Target
