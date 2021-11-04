@@ -4,6 +4,7 @@ import { Link as LinkOfWouter } from 'wouter'
 
 export const MenuAndButtonBox = styled.div`
   position: relative;
+  flex: 1;
 `
 
 export const ButtonMenu = styled.div`
@@ -13,6 +14,7 @@ export const ButtonMenu = styled.div`
   align-items: center;
   position: relative;
   cursor: pointer;
+  margin-left: auto;
 `
 
 const setCloseStyle = (isOpen) => {
