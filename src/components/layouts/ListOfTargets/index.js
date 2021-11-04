@@ -1,47 +1,24 @@
-import logo from 'logo.svg'
+import PropTypes from 'prop-types'
+
 import Target from '../Target'
 import { Container } from './styles'
 
-const listOfGymTickets = [
-  {
-    id: 1,
-    name: 'Remove',
-    avatar: logo,
-    activity: 'Musculacion',
-    time: '14:00hs',
-    maxTickets: 10,
-    currentTickets: 9,
-    isCompleted: false,
-    participants: [
-      {
-        username: 'Madeval',
-        avatar: 'logo',
-        email: 'alvarez.fing@gmail.com',
-        tel: null,
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: 'Remove',
-    avatar: logo,
-    activity: 'Fisioterapia',
-    time: '13:00hs',
-    maxTickets: 8,
-    currentTickets: 8,
-    isCompleted: true,
-    participants: [],
-  },
-]
-
-const ListOfTargets = () => {
+const ListOfTargets = ({ gymPartners }) => {
   return (
     <Container>
-      {listOfGymTickets.map((gym) => (
-        <Target key={gym.gymId} gym={gym} />
+      {gymPartners.map((gymPartner) => (
+        <Target
+          key={gymPartner._id}
+          classes={gymPartner.classes}
+          gymPartner={gymPartner}
+        />
       ))}
     </Container>
   )
+}
+
+ListOfTargets.propTypes = {
+  gymPartners: PropTypes.array,
 }
 
 export default ListOfTargets
