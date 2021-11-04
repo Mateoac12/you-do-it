@@ -32,7 +32,12 @@ const secondary = `
   color: ${styles.whiteAccent};
 `
 
-const tertiary = ``
+const tertiary = `
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  color: ${styles.whiteAccent};
+  font-size: 40px;
+`
 
 const listOfStyles = {
   [TITLE_STYLE.PRINCIPAL]: principal,
