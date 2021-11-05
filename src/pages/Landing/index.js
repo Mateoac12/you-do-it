@@ -3,7 +3,7 @@ import { BUTTON_STYLE, TITLE_STYLE } from 'config/componentsRules'
 import ButtonLink from 'components/atoms/ButtonLink'
 import Text from 'components/atoms/Text'
 import Title from 'components/atoms/Title'
-import ListOfTargets from 'components/layouts/ListOfTargets'
+import ListOfTargets from 'components/layouts/ListOfTargets/demo'
 
 const Landing = () => {
   return (
