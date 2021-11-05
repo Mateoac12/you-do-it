@@ -1,18 +1,23 @@
+import { useContext } from 'react'
+import { Switch } from 'wouter'
+
+import { Context } from 'context/userContext'
+import { SUBSCRIPTIONS } from 'config/typeOfSubs'
+
 import Header from 'components/molecules/Header'
-import AddCodeGym from 'pages/AddCodeGym'
-import HomePage from 'pages/HomePage'
-import UserSettings from 'pages/UserSettings'
-import { Redirect, Route, Switch } from 'wouter'
+
+import SportPlayerRoutes from './SportPlayerRoutes'
+import TrainerRoutes from './TrainerRoutes'
 
 const PrivateRoutes = () => {
+  const { user } = useContext(Context)
+  const isSportPlayer = user.role === SUBSCRIPTIONS.SPORTPLAYER
+
   return (
     <>
       <Header />
       <Switch>
-        <Route path='/home' component={HomePage} />
-        <Route path='/add-code-gym' component={AddCodeGym} />
-        <Route path='/user-settings' component={UserSettings} />
-        <Redirect to='/home' />
+        {isSportPlayer ? <SportPlayerRoutes /> : <TrainerRoutes />}
       </Switch>
     </>
   )

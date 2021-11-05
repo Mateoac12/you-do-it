@@ -4,13 +4,14 @@ import { Context } from 'context/userContext'
 import { Loading } from 'components/atoms/Spinner/styles'
 import PrivateRoutes from './privateRoutes'
 import PublicRoutes from './publicRoutes'
+import { useSaveUser } from 'hooks/useSaveUser'
 
 const Routers = () => {
-  const { user } = useContext(Context)
+  const { user, setUser } = useContext(Context)
   const [loader, setLoader] = useState(true)
 
-  // TODO: chequear en indexedDB o localStorage si existe un token y el objeto User. (posible hook)
   useEffect(() => {
+    useSaveUser(null, setUser)
     setLoader(false)
   }, [])
 
