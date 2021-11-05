@@ -1,62 +1,46 @@
-import Avatar from 'components/atoms/Avatar'
-import Title from 'components/atoms/Title'
-import { AVATAR_STYLE, BUTTON_STYLE } from 'config/componentsRules'
-import { Context } from 'context/userContext'
-import { useContext, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 
-import { ButtonInput, Input, InputHidde, PageContent } from './styles'
+import { Context } from 'context/userContext'
+import { useLogout } from 'hooks/useLogout'
+
 import ButtonFunction from 'components/atoms/ButtonFunction'
+import AlertModal from 'components/atoms/AlertModal'
+import NameSettings from './NameSettings'
+import AvatarSettings from './AvatarSettings'
+
+import { PageContent } from './styles'
 
 const UserSettings = () => {
-  const [showInput, setShowInput] = useState(false)
-  const [newName, setNewName] = useState('')
-  const { user } = useContext(Context)
-  const { displayName, photoURL } = user
-  const file = useRef()
+  const { user, setUser } = useContext(Context)
 
-  const handleChange = () => {
-    file.current.click()
-  }
+  const [customError, setCustomError] = useState(null)
+  const [loadingFetch, setLoadingFetch] = useState(false)
 
-  const handleSubmitImage = (e) => {
-    console.log(e)
-  }
-
-  const handleLogout = () => {
-    console.log('')
-  }
-
-  const handleChangeName = () => setShowInput((lastValue) => !lastValue)
-  const handleChangeNewName = (e) => setNewName(e.target.value)
+  const handleLogout = () => useLogout(setUser)
 
   return (
     <PageContent>
-      <Avatar type={AVATAR_STYLE.BIG} src={photoURL} alt={displayName} />
-
-      <ButtonInput onClick={handleChange}>Cambiar imagen</ButtonInput>
-      <InputHidde
-        ref={file}
-        type='file'
-        accept='image/*'
-        onChange={handleSubmitImage}
+      <AvatarSettings
+        loadingFetch={loadingFetch}
+        setLoadingFetch={setLoadingFetch}
+        setCustomError={setCustomError}
+        user={user}
+        setUser={setUser}
       />
 
-      <Title>{displayName}</Title>
-      {showInput && (
-        <section>
-          <Input value={newName} onChange={handleChangeNewName} />
-          <ButtonFunction text='Confirmar cambios' onClick={() => {}} />
-          <ButtonFunction
-            type={BUTTON_STYLE.TERTIARY}
-            text={showInput ? 'Cancelar' : 'Cambiar nombre'}
-            onClick={handleChangeName}
-          />
-        </section>
-      )}
-      {!showInput && (
-        <ButtonFunction text='Cambiar nombre' onClick={handleChangeName} />
-      )}
+      <NameSettings
+        loadingFetch={loadingFetch}
+        setLoadingFetch={setLoadingFetch}
+        setCustomError={setCustomError}
+        user={user}
+        setUser={setUser}
+      />
+
       <ButtonFunction text='Cerrar Sesion' onClick={handleLogout} />
+
+      {customError && (
+        <AlertModal setNullError={setCustomError}>{customError}</AlertModal>
+      )}
     </PageContent>
   )
 }

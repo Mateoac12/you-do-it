@@ -23,6 +23,11 @@ export const ButtonInput = styled.button`
   :hover {
     background-color: ${styles.primaryDark};
   }
+
+  :disabled {
+    cursor: no-drop;
+    opacity: 0.5;
+  }
 `
 
 export const InputHidde = styled.input`
@@ -35,4 +40,9 @@ export const Input = styled.input`
   border: 1px solid ${styles.primary};
   font-size: 24px;
   text-align: center;
+`
+
+export const BoxDisplayNameSettings = styled.article`
+  margin-top: 40px;
+  margin-bottom: 40px;
 `

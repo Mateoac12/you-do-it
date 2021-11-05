@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import PropTypes from 'prop-types'
 
@@ -12,8 +12,11 @@ import SpanSubscription from 'components/atoms/SpanSubscription'
 import Title from 'components/atoms/Title'
 
 import { SUBSCRIPTIONS, SUBSCRIPTION_UI } from 'config/typeOfSubs'
+import { Context } from 'context/userContext'
 
 const Register = ({ params }) => {
+  const { setUser } = useContext(Context)
+
   const displayNameInput = useRef(null)
   const emailInput = useRef(null)
   const passwordInput = useRef(null)
@@ -32,7 +35,7 @@ const Register = ({ params }) => {
     setLoadingFetching(true)
     const { error, data: user } = await useCreateUser(data, params.type)
 
-    !error ? useSaveUser(user) : setCustomError(error)
+    !error ? useSaveUser(user, setUser) : setCustomError(error)
     setLoadingFetching(false)
   }
 
